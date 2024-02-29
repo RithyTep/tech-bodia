@@ -1,6 +1,7 @@
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  padding-top: 70px;
   .cards {
     display: flex;
     flex-wrap: wrap;
@@ -8,6 +9,7 @@
     .card {
       width: 260px;
       margin: 0 auto;
+      background-color: #fff;
       padding: 2rem;
       border-top: 5px solid hsl(212, 86%, 64%);
       border-radius: 5px;
