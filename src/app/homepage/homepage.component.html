@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="boxes">
+    <div class="box" *ngFor="let item of currentPageItems">
+      <img [src]="item.flags.png" alt="" />
+      <p>official: {{ item.name.official }}</p>
+      <p>cca2:{{ item.cca2 }}</p>
+      <p>cca2:{{ item.cca3 }}</p>
+      <p *ngIf="item.name.nativeName?.fra?.common">
+        nativeName: {{ item.name.nativeName?.fra?.common }}
+      </p>
+      <p>idd: {{ item.idd.root }}</p>
+    </div>
+  </div>
+  <div>
+    <div class="paginator">
+      <button (click)="previousPage()">Prev</button>
+
+      <button
+        *ngFor="let pageNumber of totalPages"
+        (click)="goToPage(pageNumber)"
+        [ngClass]="{ active: pageNumber === currentPage }"
+      >
+        {{ pageNumber }}
+      </button>
+      <button (click)="nextPage()">Next</button>
+    </div>
+  </div>
+</div>
