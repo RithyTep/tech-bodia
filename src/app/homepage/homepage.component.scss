@@ -1,49 +1,63 @@
-.container{
-    .boxes{
-        display: grid;
-        justify-items: center;
-        grid-template-columns: auto auto auto auto;
-        .box{
-            width: 300px;
-            padding: 20px;
-            border: 1px solid #000;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            &:hover{
-                background-color: #f4f4f4;
-            }
-            img{
-                width: 100%;
-                height: 150px;
-            }
-        }
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    .card {
+      width: 260px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-top: 5px solid hsl(212, 86%, 64%);
+      border-radius: 5px;
+      box-shadow: 0 10px 10px rgba(23, 79, 138, 0.1);
+      &:hover {
+        background-color: #f4f4f4;
+      }
+      img {
+        width: 100%;
+        height: 164px;
+        border-radius: 5px;
+      }
+      .card-title {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: hsl(234, 12%, 34%);
+      }
+      .card-content {
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #a3a5ae;
+      }
     }
+  }
 
-    .paginator{
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-        button{
-            background-color: transparent;
-            border: 0 none;
-            color: #6c757d;
-            min-width: 3rem;
-            height: 3rem;
-            margin: 0.143rem;
-            cursor: pointer;
-            transition: box-shadow 0.2s;
-            border-radius: 50%;
-            &:hover{
-                background-color: #f4f4f4;
-            }
-            &.active{
-                background: #EFF6FF;
-                border-color: #EFF6FF;
-                color: #1D4ED8;
-            }
-        }
+  .paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    button {
+      background-color: transparent;
+      border: 0 none;
+      color: #6c757d;
+      min-width: 3rem;
+      height: 3rem;
+      margin: 0.143rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      border-radius: 50%;
+      &:hover {
+        background-color: #f4f4f4;
+      }
+      &.active {
+        background: #eff6ff;
+        border-color: #eff6ff;
+        color: #1d4ed8;
+      }
     }
+  }
 }

@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="boxes">
-    <div class="box" *ngFor="let item of currentPageItems">
+  <div class="cards">
+    <div class="card" *ngFor="let item of currentPageItems">
       <img [src]="item.flags.png" alt="" />
-      <p>official: {{ item.name.official }}</p>
-      <p>cca2:{{ item.cca2 }}</p>
-      <p>cca2:{{ item.cca3 }}</p>
-      <p *ngIf="item.name.nativeName?.fra?.common">
+      <p class="card-title">{{ item.name.official }}</p>
+      <p class="card-content">cca2:{{ item.cca2 }}</p>
+      <p class="card-content">cca2:{{ item.cca3 }}</p>
+      <p class="card-content" *ngIf="item.name.nativeName?.fra?.common">
         nativeName: {{ item.name.nativeName?.fra?.common }}
       </p>
-      <p>idd: {{ item.idd.root }}</p>
+      <p class="card-content">idd: {{ item.idd.root }}</p>
     </div>
   </div>
   <div>
