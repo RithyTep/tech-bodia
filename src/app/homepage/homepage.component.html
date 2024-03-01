@@ -44,15 +44,12 @@
   </mat-menu>
 
   <div class="cards">
-    <div
-      class="card"
-      *ngFor="let item of currentPageItems"
-    >
+    <div class="card" *ngFor="let item of currentPageItems">
       <img [src]="item.flags.png" alt="" />
       <div class="content">
-        <p class="card-title"
-      (click)="openDialog(item)"
-      >{{ item?.name?.official }}</p>
+        <p class="card-title" (click)="openDialog(item)">
+          {{ item?.name?.official }}
+        </p>
         <p class="card-content" *ngIf="item.cca2">
           CCA2: <span class="text-value">{{ item?.cca2 }}</span>
         </p>
