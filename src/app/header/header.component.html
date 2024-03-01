@@ -9,14 +9,16 @@
     <div class="search-bar">
       <div class="border-search">
         <div class="InputContainer">
-          <textarea
+          <input
             class="style-1"
             id="searchTextarea"
-            placeholder="Search for a country"
+            placeholder="Search for a country
+            "
             rows="1"
             [(ngModel)]="store.searchTerm"
-          ></textarea>
-        </div>
+          >
+
+          <ion-icon *ngIf="store.searchTerm" (click)="this.store.searchTerm = null" name="close-outline"></ion-icon>        </div>
         <button class="center" type="submit">
           <ion-icon class="ionicon2" name="search"></ion-icon>
         </button>

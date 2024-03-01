@@ -65,22 +65,26 @@
 
         .InputContainer {
           position: relative;
-          flex-grow: 1;
-          display: grid;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: 30px;
           height: 100%;
-
-          textarea {
+          width: 100%;
+          input {
             font-family: "Poppins", sans-serif;
             background-color: transparent;
             font-size: 15px;
             cursor: auto;
             border: none;
-            resize: none;
-            overflow-x: hidden;
-            overflow-y: auto;
+            width: 100%;
             margin: auto 0;
             outline: none;
-            grid-area: 1/1/2/2;
+          }
+          ion-icon{
+            font-size: 22px;
+            color: #5b636a;
+            cursor: pointer;
           }
         }
       }
