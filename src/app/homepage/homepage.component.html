@@ -1,6 +1,4 @@
 <div class="container">
-  <!-- <input (keyup)="getItem($event)" placeholder="Search" /> -->
-
   <div class="banner">
     <h1 class="shop-title">Country</h1>
     <div class="shop-subtitle">
@@ -9,16 +7,39 @@
   </div>
 
   <button
-    matRipple
-    class="btn-sort"
-    [matMenuTriggerFor]="menu"
-    (menuClosed)="isMenuOpen = false"
-    (click)="toggleMenu()"
-  >
-    Sort by
-    <ion-icon *ngIf="!isMenuOpen" name="caret-down-outline"></ion-icon>
-    <ion-icon *ngIf="isMenuOpen" name="caret-up-outline"></ion-icon>
-  </button>
+  matRipple
+  class="btn-sort"
+  [matMenuTriggerFor]="menu"
+  (menuClosed)="isMenuOpen = false"
+  (click)="toggleMenu()"
+>
+  Sort by
+  <ion-icon *ngIf="!isMenuOpen" name="caret-down-outline"></ion-icon>
+  <ion-icon *ngIf="isMenuOpen" name="caret-up-outline"></ion-icon>
+</button>
+  <div class="cards" *ngIf="isLoading">
+    <div class="card" *ngFor="let i of [].constructor(9)">
+      <img
+        class="list-img loading-img"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGF38rUUj_-ofBZHHaMhgfAzLbtAzkac9Efwsmm6iJ&s"
+        alt=""
+      />
+      <div class="content">
+        <p class="card-title text-loading">&nbsp;</p>
+        <p class="card-content text-loading " *ngFor="let i of [].constructor(4)">
+          &nbsp;
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="filteredCountries.length === 0 && !isLoading">
+    <div class="d-block">
+      <img class="no-result-img" src="assets/img/search-not-found.png" alt="" />
+      <p>Sorry, no matches were found.</p>
+    </div>
+  </div>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="sortCountries('asc')">Asc</button>
     <button mat-menu-item (click)="sortCountries('desc')">Desc</button>
@@ -37,7 +58,7 @@
         <p class="card-content">
           CCA3 : <span class="text-value">{{ item?.cca3 }}</span>
         </p>
-        <p class="card-content">
+        <p class="card-content" *ngIf="item.altSpellings[1]">
           Alt Spellings:
           <span class="text-value"> {{ item.altSpellings[1] }}</span>
         </p>

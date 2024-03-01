@@ -1,6 +1,11 @@
 <div class="header-container">
   <div class="header-wrapper">
-    <div class="logo" routerLink="/home"></div>
+    <div class="logo" routerLink="/home">
+      <div class="d-flex">
+        <img src="assets\img\world_icon.png" alt="" />
+        <p>Country</p>
+      </div>
+    </div>
     <div class="search-bar">
       <div class="border-search">
         <div class="InputContainer">
@@ -8,7 +13,8 @@
             class="style-1"
             id="searchTextarea"
             placeholder="Search for a country"
-            rows="1" [(ngModel)]="store.searchTerm" 
+            rows="1"
+            [(ngModel)]="store.searchTerm"
           ></textarea>
         </div>
 
@@ -19,13 +25,11 @@
     </div>
 
     <div class="categories">
-      <p>News</p>
-      <p>Finance</p>
-      <p>Sports</p>
-      <p>Dark Mode</p>
+      <a target="_blank" href="https://github.com/RithyTep/tech-bodia">
+        <ion-icon name="logo-github"></ion-icon>
 
+        Github</a
+      >
     </div>
-
-  
   </div>
 </div>

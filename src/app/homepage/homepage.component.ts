@@ -19,24 +19,17 @@ export class HomepageComponent {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  isLoading = false;
+
   ngOnInit() {
+    this.isLoading = true;
     this.api.fetchCountry().subscribe((data: any) => {
       this.country = data;
-      console.log(this.country, 'wtfs');
       this.calculateTotalPages();
+      this.isLoading = false;
     });
   }
 
-  // getItem(event: Event) {
-  //   this.itemsPerPage = (event.target as HTMLInputElement).value as any;
-  //   console.log(this.itemsPerPage, 'itemsPerPage');
-  // }
-
-  // get currentPageItems() {
-  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-  //   const endIndex = startIndex + this.itemsPerPage;
-  //   return this.country.slice(startIndex, endIndex);
-  // }
   get currentPageItems() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
