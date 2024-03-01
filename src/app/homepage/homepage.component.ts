@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { CountryDetailDialogComponent } from '../country-dialog/country-detail-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CountryStore } from '../Stores/country.store';
 
 @Component({
   selector: 'app-homepage',
@@ -9,10 +12,9 @@ import { ApiService } from '../services/api.service';
 export class HomepageComponent {
   country: any[] = [];
   currentPage = 1;
-  itemsPerPage = 25;
   totalPages: number[] = [];
-
-  constructor(private api: ApiService) {}
+  itemsPerPage: number = 25;
+  constructor(private api: ApiService, public dialog: MatDialog, public store: CountryStore) {}
 
   ngOnInit() {
     this.api.fetchCountry().subscribe((data: any) => {
@@ -22,15 +24,26 @@ export class HomepageComponent {
     });
   }
 
+  // getItem(event: Event) {
+  //   this.itemsPerPage = (event.target as HTMLInputElement).value as any;
+  //   console.log(this.itemsPerPage, 'itemsPerPage');
+  // }
+
+  // get currentPageItems() {
+  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  //   const endIndex = startIndex + this.itemsPerPage;
+  //   return this.country.slice(startIndex, endIndex);
+  // }
   get currentPageItems() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.country.slice(startIndex, endIndex);
+    return this.filteredCountries.slice(startIndex, endIndex);
   }
-
   calculateTotalPages() {
     const totalItems = this.country.length;
-    this.totalPages = Array(Math.ceil(totalItems / this.itemsPerPage)).fill(0).map((x, i) => i + 1);
+    this.totalPages = Array(Math.ceil(totalItems / this.itemsPerPage))
+      .fill(0)
+      .map((x, i) => i + 1);
   }
 
   nextPage() {
@@ -48,5 +61,41 @@ export class HomepageComponent {
 
   goToPage(pageNumber: number) {
     this.currentPage = pageNumber;
+  }
+
+  get filteredCountries() {
+    if (this.store.searchTerm) {
+      return this.country.filter((item) =>
+        item.name.official.toLowerCase().includes(this.store.searchTerm.toLowerCase())
+      );
+    } else {
+      return this.country;
+    }
+  }
+
+  sortCountries(order: string) {
+    this.country.sort((a, b) => {
+      const nameA = a.name.official.toLowerCase();
+      const nameB = b.name.official.toLowerCase();
+  
+      if (order === 'asc') {
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+      } else {
+        if (nameA > nameB) return -1;
+        if (nameA < nameB) return 1;
+        return 0;
+      }
+    });
+  }
+  openDialog(item: any) {
+    const dialogRef = this.dialog.open(CountryDetailDialogComponent, {
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

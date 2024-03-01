@@ -1,28 +1,43 @@
 <div class="container">
+  <!-- <input (keyup)="getItem($event)" placeholder="Search" /> -->
+  <button (click)="sortCountries('asc')">Asc</button>
+  <button (click)="sortCountries('desc')">Desc</button>
   <div class="cards">
-    <div class="card" *ngFor="let item of currentPageItems">
+    <div
+      class="card"
+      *ngFor="let item of currentPageItems"
+      (click)="openDialog(item)"
+    >
       <img [src]="item.flags.png" alt="" />
-      <p class="card-title">{{ item.name.official }}</p>
-      <p class="card-content">cca2:{{ item.cca2 }}</p>
-      <p class="card-content">cca2:{{ item.cca3 }}</p>
-      <p class="card-content" *ngIf="item.name.nativeName?.fra?.common">
-        nativeName: {{ item.name.nativeName?.fra?.common }}
-      </p>
-      <p class="card-content">idd: {{ item.idd.root }}</p>
-    </div>
-  </div>
-  <div>
-    <div class="paginator">
-      <button (click)="previousPage()">Prev</button>
 
-      <button
-        *ngFor="let pageNumber of totalPages"
-        (click)="goToPage(pageNumber)"
-        [ngClass]="{ active: pageNumber === currentPage }"
-      >
-        {{ pageNumber }}
-      </button>
-      <button (click)="nextPage()">Next</button>
+      <div class="content">
+        <p class="card-title">{{ item.name.common }}</p>
+        <p class="card-content">
+          Population: <span class="text-value">{{ item.population }}</span>
+        </p>
+        <p class="card-content">
+          Region : <span class="text-value">{{ item.population }}</span>
+        </p>
+        <p class="card-content">
+          Capital: <span class="text-value"> {{ item.capital }}</span>
+        </p>
+        <p class="card-content">
+          Area: <span class="text-value">{{ item.area }} km<sup>2</sup></span>
+        </p>
+      </div>
     </div>
   </div>
+  <div></div>
+</div>
+<div class="paginator">
+  <button (click)="previousPage()">Prev</button>
+
+  <button
+    *ngFor="let pageNumber of totalPages"
+    (click)="goToPage(pageNumber)"
+    [ngClass]="{ active: pageNumber === currentPage }"
+  >
+    {{ pageNumber }}
+  </button>
+  <button (click)="nextPage()">Next</button>
 </div>

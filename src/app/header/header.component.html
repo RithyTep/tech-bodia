@@ -8,13 +8,13 @@
             class="style-1"
             id="searchTextarea"
             placeholder="Search the web"
-            rows="1"
-            formControlName="Search"
-            #searchTextarea
+            rows="1" [(ngModel)]="store.searchTerm" 
           ></textarea>
         </div>
 
-        <button class="center" type="submit"></button>
+        <button class="center" type="submit">
+          <ion-icon class="ionicon2" name="search"></ion-icon>
+        </button>
       </div>
     </div>
 
@@ -22,13 +22,10 @@
       <p>News</p>
       <p>Finance</p>
       <p>Sports</p>
-      <p>More</p>
+      <p>Dark Mode</p>
+
     </div>
 
-    <div class="right-btn">
-      <div class="mail">
-        <p>Mail</p>
-      </div>
-    </div>
+  
   </div>
 </div>

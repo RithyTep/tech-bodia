@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CountryStore } from '../Stores/country.store';
 
 
 @Component({
@@ -8,6 +9,6 @@ import { Component } from '@angular/core';
 
 })
 export class HeaderComponent {
-
+constructor(public store : CountryStore){}
   
 }

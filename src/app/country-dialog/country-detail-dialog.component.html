@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Hi s</h2>
+<mat-dialog-content>
+  <p class="card-title">{{ item?.name?.official }}</p>
+  <p class="card-content">cca2:{{ item?.cca2 }}</p>
+  <p class="card-content">cca3:{{ item?.cca3 }}</p>
+  <p class="card-content">altSpellings:{{ item.altSpellings[1] }}</p>
+
+  <p class="card-content">idd:{{ item?.idd?.root }}</p>
+  <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
+    nativeName: {{ item?.name?.nativeName?.fra?.common }}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
