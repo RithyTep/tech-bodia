@@ -24,7 +24,7 @@ export class CountryDetailDialogComponent {
     this.item = data;
   }
 
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 }

@@ -1,16 +1,68 @@
-<h2 mat-dialog-title>Hi s</h2>
+<h2 class="title" mat-dialog-title>
+  <span class="text-value">{{ item?.name?.common }}</span>
+</h2>
 <mat-dialog-content>
-  <p class="card-title">{{ item?.name?.official }}</p>
-  <p class="card-content">cca2:{{ item?.cca2 }}</p>
-  <p class="card-content">cca3:{{ item?.cca3 }}</p>
-  <p class="card-content">altSpellings:{{ item.altSpellings[1] }}</p>
+  <div class="d-flex">
+    <div class="left">
+      <img [src]="item?.flags?.svg" class="card-title" />
+    </div>
+    <div class="right">
+      <div class="section-1">
+        <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
+          nativeName:
+          <span class="text-value">{{
+            item?.name?.nativeName?.fra?.common
+          }}</span>
+        </p>
+        <p class="card-content">
+          cca2: <span class="text-value">{{ item?.cca2 }}</span>
+        </p>
+        <p class="card-content">
+          cca3: <span class="text-value">{{ item?.cca3 }}</span>
+        </p>
+        <p class="card-content">
+          Alt Spellings:
+          <span class="text-value">{{ item.altSpellings[1] }}</span>
+        </p>
+        <p class="card-content">
+          idd: <span class="text-value">{{ item?.idd?.root }}</span>
+        </p>
+        <p class="card-content">
+          Area: <span class="text-value">{{ item?.area }} Km<sup>2</sup></span>
+        </p>
+        <p class="card-content">
+          Capital: <span class="text-value">{{ item.capital[0] }}</span>
+        </p>
+        <p class="card-content">
+          Region: <span class="text-value">{{ item?.region }}</span>
+        </p>
+        <p class="card-content">
+          Subregion: <span class="text-value">{{ item?.subregion }}</span>
+        </p>
+        <p class="card-content">
+          Border Countries: <span class="text-value">{{ item?.borders }}</span>
+        </p>
+      </div>
+      <div class="section-1">
+        <p class="card-content">
+          Population: <span class="text-value">{{ item?.population }}</span>
+        </p>
+        <p class="card-content">
+          Languages:
+          <span class="text-value">{{ item?.languages | json }}</span>
+        </p>
+        <p class="card-content">
+          Currencies:
+          <span class="text-value">{{ item?.currencies | json }}</span>
+        </p>
 
-  <p class="card-content">idd:{{ item?.idd?.root }}</p>
-  <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
-    nativeName: {{ item?.name?.nativeName?.fra?.common }}
-  </p>
+        <p class="card-content">
+          Timezones: <span class="text-value">{{ item?.timezones }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button (click)="closeDialog()">Close</button>
 </mat-dialog-actions>

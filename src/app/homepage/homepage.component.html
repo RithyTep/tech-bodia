@@ -7,78 +7,78 @@
   </div>
 
   <button
-  matRipple
-  class="btn-sort"
-  [matMenuTriggerFor]="menu"
-  (menuClosed)="isMenuOpen = false"
-  (click)="toggleMenu()"
->
-  Sort by
-  <ion-icon *ngIf="!isMenuOpen" name="caret-down-outline"></ion-icon>
-  <ion-icon *ngIf="isMenuOpen" name="caret-up-outline"></ion-icon>
-</button>
+    matRipple
+    class="btn-sort"
+    [matMenuTriggerFor]="menu"
+    (click)="toggleMenu()"
+  >
+    Sort by
+    <ion-icon
+      [name]="isMenuOpen ? 'caret-up-outline' : 'caret-down-outline'"
+    ></ion-icon>
+  </button>
+
   <div class="cards" *ngIf="isLoading">
     <div class="card" *ngFor="let i of [].constructor(9)">
-      <img
-        class="list-img loading-img"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGF38rUUj_-ofBZHHaMhgfAzLbtAzkac9Efwsmm6iJ&s"
-        alt=""
-      />
+      <img class="list-img loading-img" alt="" />
       <div class="content">
         <p class="card-title text-loading">&nbsp;</p>
-        <p class="card-content text-loading " *ngFor="let i of [].constructor(4)">
+        <p
+          class="card-content text-loading"
+          *ngFor="let i of [].constructor(4)"
+        >
           &nbsp;
         </p>
       </div>
     </div>
   </div>
 
-
-  <div *ngIf="filteredCountries.length === 0 && !isLoading">
-    <div class="d-block">
-      <img class="no-result-img" src="assets/img/search-not-found.png" alt="" />
-      <p>Sorry, no matches were found.</p>
-    </div>
+  <div *ngIf="filteredCountries.length === 0 && !isLoading" class="d-block">
+    <img class="no-result-img" src="assets/img/search-not-found.png" alt="" />
+    <p>Sorry, no matches were found.</p>
   </div>
+
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="sortCountries('asc')">Asc</button>
     <button mat-menu-item (click)="sortCountries('desc')">Desc</button>
   </mat-menu>
-  <div class="cards">
-    <div class="card" *ngFor="let item of currentPageItems">
-      <img [src]="item.flags.png" alt="" />
 
+  <div class="cards">
+    <div
+      class="card"
+      *ngFor="let item of currentPageItems"
+    >
+      <img [src]="item.flags.png" alt="" />
       <div class="content">
-        <p class="card-title" (click)="openDialog(item)">
-          {{ item?.name?.official }}
-        </p>
-        <p class="card-content">
+        <p class="card-title"
+      (click)="openDialog(item)"
+      >{{ item?.name?.official }}</p>
+        <p class="card-content" *ngIf="item.cca2">
           CCA2: <span class="text-value">{{ item?.cca2 }}</span>
         </p>
-        <p class="card-content">
+        <p class="card-content" *ngIf="item.cca3">
           CCA3 : <span class="text-value">{{ item?.cca3 }}</span>
         </p>
         <p class="card-content" *ngIf="item.altSpellings[1]">
           Alt Spellings:
-          <span class="text-value"> {{ item.altSpellings[1] }}</span>
+          <span class="text-value">{{ item.altSpellings[1] }}</span>
         </p>
         <p class="card-content">
-          IDD: <span class="text-value">{{ item?.idd?.root }} </span>
+          IDD: <span class="text-value">{{ item?.idd?.root }}</span>
         </p>
         <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
           Native Name:
-          <span class="text-value">
-            {{ item?.name?.nativeName?.fra?.common }}
-          </span>
+          <span class="text-value">{{
+            item?.name?.nativeName?.fra?.common
+          }}</span>
         </p>
       </div>
     </div>
   </div>
-  <div></div>
 </div>
+
 <div class="paginator">
   <button (click)="previousPage()">Prev</button>
-
   <button
     *ngFor="let pageNumber of totalPages"
     (click)="goToPage(pageNumber)"
