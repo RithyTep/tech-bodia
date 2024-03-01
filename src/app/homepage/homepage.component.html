@@ -1,28 +1,54 @@
 <div class="container">
   <!-- <input (keyup)="getItem($event)" placeholder="Search" /> -->
-  <button (click)="sortCountries('asc')">Asc</button>
-  <button (click)="sortCountries('desc')">Desc</button>
+
+  <div class="banner">
+    <h1 class="shop-title">Country</h1>
+    <div class="shop-subtitle">
+      a unique chapter in the story of humanity, waiting to be explored
+    </div>
+  </div>
+
+  <button
+    matRipple
+    class="btn-sort"
+    [matMenuTriggerFor]="menu"
+    (menuClosed)="isMenuOpen = false"
+    (click)="toggleMenu()"
+  >
+    Sort by
+    <ion-icon *ngIf="!isMenuOpen" name="caret-down-outline"></ion-icon>
+    <ion-icon *ngIf="isMenuOpen" name="caret-up-outline"></ion-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="sortCountries('asc')">Asc</button>
+    <button mat-menu-item (click)="sortCountries('desc')">Desc</button>
+  </mat-menu>
   <div class="cards">
-    <div
-      class="card"
-      *ngFor="let item of currentPageItems"
-      (click)="openDialog(item)"
-    >
+    <div class="card" *ngFor="let item of currentPageItems">
       <img [src]="item.flags.png" alt="" />
 
       <div class="content">
-        <p class="card-title">{{ item.name.common }}</p>
-        <p class="card-content">
-          Population: <span class="text-value">{{ item.population }}</span>
+        <p class="card-title" (click)="openDialog(item)">
+          {{ item?.name?.official }}
         </p>
         <p class="card-content">
-          Region : <span class="text-value">{{ item.population }}</span>
+          CCA2: <span class="text-value">{{ item?.cca2 }}</span>
         </p>
         <p class="card-content">
-          Capital: <span class="text-value"> {{ item.capital }}</span>
+          CCA3 : <span class="text-value">{{ item?.cca3 }}</span>
         </p>
         <p class="card-content">
-          Area: <span class="text-value">{{ item.area }} km<sup>2</sup></span>
+          Alt Spellings:
+          <span class="text-value"> {{ item.altSpellings[1] }}</span>
+        </p>
+        <p class="card-content">
+          IDD: <span class="text-value">{{ item?.idd?.root }} </span>
+        </p>
+        <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
+          Native Name:
+          <span class="text-value">
+            {{ item?.name?.nativeName?.fra?.common }}
+          </span>
         </p>
       </div>
     </div>

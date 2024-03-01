@@ -15,7 +15,10 @@ export class HomepageComponent {
   totalPages: number[] = [];
   itemsPerPage: number = 25;
   constructor(private api: ApiService, public dialog: MatDialog, public store: CountryStore) {}
-
+  isMenuOpen = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
   ngOnInit() {
     this.api.fetchCountry().subscribe((data: any) => {
       this.country = data;
@@ -74,6 +77,7 @@ export class HomepageComponent {
   }
 
   sortCountries(order: string) {
+    this.isMenuOpen = false;
     this.country.sort((a, b) => {
       const nameA = a.name.official.toLowerCase();
       const nameB = b.name.official.toLowerCase();
