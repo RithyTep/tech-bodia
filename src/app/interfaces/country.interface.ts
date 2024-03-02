@@ -1,19 +1,35 @@
 export interface ICountry {
-  idd: any;
-  name?: any;
+  name: {
+    common: string;
+    nativeName?: {
+      fra?: {
+        common: string;
+      };
+    };
+  };
+  flags: {
+    svg: string;
+  };
   cca2: string;
   cca3: string;
   altSpellings: string[];
-  flags: any;
+  idd: {
+    root: string;
+  };
   area: number;
   capital: string[];
   region: string;
   subregion: string;
-  population: number;
-  languages: any;
-  currencies: any;
-  independent: boolean;
-  timezones: string[];
-  unMember: boolean;
   borders: string[];
+  population: number;
+  languages: {
+    [key: string]: string;
+  };
+  currencies: {
+    [key: string]: {
+      name: string;
+      symbol: string;
+    };
+  };
+  timezones: string[];
 }

@@ -12,13 +12,10 @@
     margin: auto;
     display: flex;
     align-items: center;
-    @media screen and (max-width: 1500px) {
-      margin: 0 40px;
-    }
-
     .logo {
       display: block;
       margin: auto 0;
+      min-width: 48px;
       width: 48px;
 
       .d-flex {
@@ -81,7 +78,7 @@
             margin: auto 0;
             outline: none;
           }
-          ion-icon{
+          ion-icon {
             font-size: 22px;
             color: #5b636a;
             cursor: pointer;
@@ -137,6 +134,23 @@
 
       a:hover {
         color: #007bff;
+      }
+    }
+    @media screen and (max-width: 1500px) {
+      margin: 0 40px;
+    }
+    @media screen and (max-width: 730px) {
+      .d-flex {
+        p {
+          display: none;
+        }
+      }
+      .categories {
+        display: none;
+      }
+
+      .search-bar {
+        margin-left: 12px;
       }
     }
   }

@@ -16,9 +16,14 @@
             "
             rows="1"
             [(ngModel)]="store.searchTerm"
-          >
+          />
 
-          <ion-icon *ngIf="store.searchTerm" (click)="this.store.searchTerm = null" name="close-outline"></ion-icon>        </div>
+          <ion-icon
+            *ngIf="store.searchTerm"
+            (click)="this.store.searchTerm = null"
+            name="close-outline"
+          ></ion-icon>
+        </div>
         <button class="center" type="submit">
           <ion-icon class="ionicon2" name="search"></ion-icon>
         </button>

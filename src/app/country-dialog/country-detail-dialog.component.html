@@ -1,69 +1,68 @@
 <h2 class="title" mat-dialog-title>
-  <span class="text-value">{{ item?.name?.common }}</span>
+  <span class="text-value">{{ item.name.common }}</span>
 </h2>
 <mat-dialog-content>
   <div class="d-flex">
     <div class="left">
-      <img [src]="item?.flags?.svg" class="card-title" />
+      <img [src]="item.flags.svg" class="card-title" />
     </div>
     <div class="right">
       <div class="info-title">
         <p>Country Information</p>
       </div>
       <div class="section-main">
-        <div class="section-1">
-          <p class="card-content" *ngIf="item?.name?.nativeName?.fra?.common">
-            nativeName:
+        <div class="section-row">
+          <p class="card-content" *ngIf="item.name.nativeName?.fra?.common">
+            Native Name:
             <span class="text-value">{{
-              item?.name?.nativeName?.fra?.common
+              item.name.nativeName?.fra?.common
             }}</span>
           </p>
           <p class="card-content">
-            cca2: <span class="text-value">{{ item?.cca2 }}</span>
+            CCA2: <span class="text-value">{{ item.cca2 }}</span>
           </p>
           <p class="card-content">
-            cca3: <span class="text-value">{{ item?.cca3 }}</span>
+            CCA3: <span class="text-value">{{ item.cca3 }}</span>
           </p>
           <p class="card-content">
             Alt Spellings:
             <span class="text-value">{{ item.altSpellings[1] }}</span>
           </p>
           <p class="card-content">
-            idd: <span class="text-value">{{ item?.idd?.root }}</span>
+            IDD: <span class="text-value">{{ item.idd.root }}</span>
           </p>
           <p class="card-content">
-            Area:
-            <span class="text-value">{{ item?.area }} Km<sup>2</sup></span>
+            Area: <span class="text-value">{{ item.area }} Km<sup>2</sup></span>
           </p>
           <p class="card-content">
             Capital: <span class="text-value">{{ item.capital[0] }}</span>
           </p>
           <p class="card-content">
-            Region: <span class="text-value">{{ item?.region }}</span>
+            Region: <span class="text-value">{{ item.region }}</span>
           </p>
           <p class="card-content">
-            Subregion: <span class="text-value">{{ item?.subregion }}</span>
+            Subregion: <span class="text-value">{{ item.subregion }}</span>
           </p>
           <p class="card-content">
             Border Countries:
-            <span class="text-value">{{ item?.borders }}</span>
+            <span class="text-value">{{ item.borders.join(", ") }}</span>
           </p>
         </div>
-        <div class="section-1">
+        <div class="section-row">
           <p class="card-content">
-            Population: <span class="text-value">{{ item?.population }}</span>
+            Population: <span class="text-value">{{ item.population }}</span>
           </p>
           <p class="card-content">
             Languages:
-            <span class="text-value">{{ item?.languages | json }}</span>
+            <span class="text-value">{{ item.languages | json }}</span>
           </p>
           <p class="card-content">
             Currencies:
-            <span class="text-value">{{ item?.currencies | json }}</span>
+            <span class="text-value">{{ item.currencies | json }}</span>
           </p>
-
           <p class="card-content">
-            Timezones: <span class="text-value">{{ item?.timezones }}</span>
+            Timezones:
+            <span class="text-value">{{ item.timezones }}</span>
           </p>
         </div>
       </div>

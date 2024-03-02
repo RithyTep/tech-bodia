@@ -75,13 +75,13 @@
 </div>
 
 <div class="paginator">
-  <button (click)="previousPage()">Prev</button>
+  <button (click)="navigatePage('prev')">Prev</button>
   <button
-    *ngFor="let pageNumber of totalPages"
+    *ngFor="let pageNumber of visiblePages"
     (click)="goToPage(pageNumber)"
     [ngClass]="{ active: pageNumber === currentPage }"
   >
     {{ pageNumber }}
   </button>
-  <button (click)="nextPage()">Next</button>
+  <button (click)="navigatePage('next')">Next</button>
 </div>

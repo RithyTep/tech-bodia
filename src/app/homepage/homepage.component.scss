@@ -9,7 +9,7 @@
       margin: 0 auto;
       display: block;
     }
-    p{
+    p {
       font-size: 24px;
       font-weight: 600;
       color: #6e6e73;
@@ -27,7 +27,7 @@
   padding: 64px 0;
   .shop-title,
   .shop-subtitle {
-    font-size: 48px;
+    font-size: min(8.5vw, 48px);
     line-height: 1.08349;
     font-weight: 600;
     letter-spacing: -0.003em;
@@ -145,18 +145,18 @@
 }
 .loading-img {
   background-color: #cdcdcc;
-  animation: loading-effect  1s infinite;
+  animation: loading-effect 1s infinite;
 }
-.text-loading{
+.text-loading {
   background-color: #e3e3e3;
   border-image: linear-gradient(
-    to right,
-    white 15%,
-    #cedae0 40%,
-    #cedae0 60%,
-    white 85%
-  )
-  1 20%;
+      to right,
+      white 15%,
+      #cedae0 40%,
+      #cedae0 60%,
+      white 85%
+    )
+    1 20%;
   animation: loading-effect 1s infinite;
 }
 
@@ -171,4 +171,3 @@
     opacity: 1;
   }
 }
-
