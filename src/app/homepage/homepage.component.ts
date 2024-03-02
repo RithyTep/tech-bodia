@@ -66,10 +66,29 @@ export class HomepageComponent {
     this.currentPage = pageNumber;
  }
 
+
  get filteredCountries() {
-    return this.store.searchTerm ? this.country.filter(item =>
-      item.name.official.toLowerCase().includes(this.store.searchTerm.toLowerCase())
-    ) : this.country;
+   let filteredCountries;
+   if (this.store.searchTerm) {
+     filteredCountries = this.country.filter((item) =>
+       item.name.official
+         .toLowerCase()
+         .includes(this.store.searchTerm.toLowerCase())
+     );
+   } else {
+     filteredCountries = this.country;
+   }
+   this.totalPages = Array(
+     Math.ceil(filteredCountries.length / this.itemsPerPage)
+   )
+     .fill(0)
+     .map((x, i) => i + 1);
+
+     if (this.currentPage > this.totalPages.length) {
+     this.currentPage = 1;
+   }
+
+   return filteredCountries;
  }
 
  get visiblePages() {
